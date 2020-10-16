@@ -1,0 +1,21 @@
+{
+  "mount": {
+    "public": "/",
+    "src": "/_dist_"
+  },
+  "plugins": [
+    "@snowpack/plugin-typescript",
+    "@snowpack/plugin-babel",
+    "@snowpack/plugin-postcss",
+    [
+      "snowpack-plugin-rollup-bundle",
+      {
+        "entrypoints": ["build/_dist_/index.js"],
+        "emitHtmlFiles": true
+      }
+    ]
+  ],
+  "installOptions": {
+    "installTypes": true
+  }
+}
