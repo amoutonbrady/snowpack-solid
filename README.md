@@ -1,10 +1,21 @@
-# New Project
+# Solid snowpack starter (+ tailwind)
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+Solid + snowpack + tailwindcss template
+You get HMR out of the box and full PWA compatible.
+
+## Install
+
+`npx degit https://github.com/amoutonbrady/solid-snowpack-starter my-app`
+
+## Configure
+
+You don't have much configuration to do yourself. Out of the box everything should just work.
+When building for production, you might want to change some assets regarding icons & app name. You can do so in the [public](./public) folder.
+Most of the link I used to generate the PWA files are available in the [index.html](./public/index.html)
 
 ## Available Scripts
 
-### npm start
+### npm run dev
 
 Runs the app in the development mode.
 Open http://localhost:8080 to view it in the browser.
@@ -17,8 +28,6 @@ You will also see any lint errors in the console.
 Builds a static copy of your site to the `build/` folder.
 Your app is ready to be deployed!
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/pikapkg/snowpack/tree/master/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
-
 ### Q: What about Eject?
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+No eject needed! Snowpack guarantees zero lock-in.

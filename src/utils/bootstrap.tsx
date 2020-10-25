@@ -1,44 +1,88 @@
-import type { Component } from "solid-js";
-import { createComponent, render } from "solid-js/dom";
+import type { Component } from 'solid-js';
+import { createComponent, render } from 'solid-js/dom';
+
+interface Provider {
+  provider: Component;
+  opts?: Record<string, any>;
+}
+
+/**
+ * This utils function automcatically merge the provider in the order they
+ * were provided. It turns the following calls:
+ *
+ * const app = createApp(App)
+ * app.use(RouterProvider)
+ * app.use(I18nProvider, { dict })
+ * app.use(GlobalStoreProvider)
+ * app.mount('#app')
+ *
+ * into something like that:
+ *
+ * render(
+ *   <RouterProvider>
+ *     <I18nProvider dict={dict}>
+ *       <GlobalStoreProvider>
+ *         <App />
+ *       </GlobalStoreProvider>
+ *     </I18nProvider>
+ *   </RouterProvider>,
+ *   document.querySelector('#app')
+ *  )
+ */
+function mergeProviders(app: Component, providers: Provider[]) {
+  return providers.reduceRight(
+    (application, { provider, opts }) => {
+      return () =>
+        // Basically creating the provider and nesting the previous
+        // state of the App in it.
+        createComponent(provider, {
+          ...opts,
+
+          get children() {
+            return application();
+          },
+        });
+    },
+    () => app,
+  );
+}
 
 export function createApp(app: Component) {
-  const containers: { container: Component; opts?: Record<string, any> }[] = [];
+  const providers: Provider[] = [];
   let root: HTMLElement;
   let dispose: () => void;
 
-  const mergeContainers = () => {
-    return containers.reduceRight(
-      (a, { container, opts }) => {
-        return () =>
-          createComponent(container, {
-            ...opts,
-
-            get children() {
-              return a();
-            },
-          });
-      },
-      () => app
-    );
-  };
-
   return {
-    use(container: Component, opts?: Record<string, any>) {
-      containers.push({ container, opts });
+    /**
+     * Add a Provider to the app. The list of provider will be merged
+     * at mount time.
+     *
+     * @param provider {Component} - The provider to add to the list
+     * @param opts {Record<string, any>} - The optional options
+     */
+    use(provider: Component, opts?: Record<string, any>) {
+      providers.push({ provider, opts });
     },
-    dispose() {
-      dispose()
-      root.textContent = '';
-    },
-    mount(
-      dom: HTMLElement | string,
-    ) {
-      const application = mergeContainers();
+    /**
+     * It first merges all the Providers and then uses the `render` function
+     * to mount the application.
+     *
+     * @param dom {HTMLElement | string} - The element to mount your app on
+     */
+    mount(dom: HTMLElement | string) {
+      const application = mergeProviders(app, providers);
 
-      root = typeof dom === "string" ? document.querySelector(dom) : dom;
+      root = typeof dom === 'string' ? document.querySelector(dom) : dom;
       dispose = render(application, root);
 
-      return dispose
+      return dispose;
+    },
+    /**
+     * This function is used to reset the whole app state on HMR
+     */
+    dispose() {
+      dispose();
+      root.textContent = '';
     },
   };
 }

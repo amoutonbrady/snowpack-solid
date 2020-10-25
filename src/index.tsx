@@ -1,10 +1,10 @@
-import './tailwind.css'
+import { Workbox } from 'workbox-window';
 
 import { App } from './app';
 import { createApp } from './utils/bootstrap';
 
-const app = createApp(App)
-app.mount("#app");
+const app = createApp(App);
+app.mount('#app');
 
 /**
  * This bits of code is tree-shaken during build
@@ -12,6 +12,12 @@ app.mount("#app");
  * and removing the existing app in place.
  */
 if (import.meta.env.MODE === 'development') {
-  import.meta.hot.accept()
-  import.meta.hot.dispose(app.dispose)
+  import.meta.hot.accept();
+  import.meta.hot.dispose(app.dispose);
+}
+
+// https://developers.google.com/web/tools/workbox/modules/workbox-window
+if (import.meta.env.MODE === 'production' && 'serviceWorker' in navigator) {
+  const wb = new Workbox('/sw.js');
+  wb.register();
 }
