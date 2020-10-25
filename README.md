@@ -5,7 +5,7 @@ You get HMR out of the box and full PWA compatible.
 
 ## Install
 
-`npx degit https://github.com/amoutonbrady/solid-snowpack-starter my-app`
+`npx degit amoutonbrady/solid-snowpack-starter my-app`
 
 ## Configure
 
