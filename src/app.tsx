@@ -17,7 +17,7 @@ export const App: Component = () => {
       <span class="p-4 text-3xl">{count()}</span>
       <button
         type="button"
-        onClick={[increment, 4]}
+        onClick={[increment, 1]}
         class="bg-gray-900 text-gray-100 p-4 text-3xl"
       >
         +

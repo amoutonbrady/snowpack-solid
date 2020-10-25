@@ -3,8 +3,7 @@ import { Workbox } from 'workbox-window';
 import { App } from './app';
 import { createApp } from './utils/bootstrap';
 
-const app = createApp(App);
-app.mount('#app');
+const dispose = createApp(App).mount('#app');
 
 /**
  * This bits of code is tree-shaken during build
@@ -13,7 +12,7 @@ app.mount('#app');
  */
 if (import.meta.env.MODE === 'development') {
   import.meta.hot.accept();
-  import.meta.hot.dispose(app.dispose);
+  import.meta.hot.dispose(dispose);
 }
 
 // https://developers.google.com/web/tools/workbox/modules/workbox-window

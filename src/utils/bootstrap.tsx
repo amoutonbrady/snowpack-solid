@@ -49,8 +49,6 @@ function mergeProviders(app: Component, providers: Provider[]) {
 
 export function createApp(app: Component) {
   const providers: Provider[] = [];
-  let root: HTMLElement;
-  let dispose: () => void;
 
   return {
     /**
@@ -71,18 +69,8 @@ export function createApp(app: Component) {
      */
     mount(dom: HTMLElement | string) {
       const application = mergeProviders(app, providers);
-
-      root = typeof dom === 'string' ? document.querySelector(dom) : dom;
-      dispose = render(application, root);
-
-      return dispose;
-    },
-    /**
-     * This function is used to reset the whole app state on HMR
-     */
-    dispose() {
-      dispose();
-      root.textContent = '';
+      const root = typeof dom === 'string' ? document.querySelector(dom) : dom;
+      return render(application, root);
     },
   };
 }
