@@ -1,3 +1,4 @@
+import { wrap } from 'solid-js/types/reactive/state';
 import { Workbox } from 'workbox-window';
 
 import { App } from './app';
