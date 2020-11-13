@@ -13,14 +13,6 @@ Click on the **Use this template** green button at the top right
 
 `npx degit amoutonbrady/solid-snowpack-starter new-dir`
 
-### Using npm
-
-`npx create-snowpack-app new-dir --template amoutonbrady/solid-snowpack-starter`
-
-### Using yarn
-
-`yarn create snowpack-app new-dir --template amoutonbrady/solid-snowpack-starter`
-
 ## Configure
 
 You don't have much configuration to do yourself. Out of the box everything should just work.
