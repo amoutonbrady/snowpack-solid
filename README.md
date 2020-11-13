@@ -5,7 +5,21 @@ You get HMR out of the box and full PWA compatible.
 
 ## Install
 
-`npx degit amoutonbrady/solid-snowpack-starter my-app`
+### Using github template
+
+Click on the **Use this template** green button at the top right
+
+### Using degit
+
+`npx degit amoutonbrady/solid-snowpack-starter new-dir`
+
+### Using npm
+
+`npx create-snowpack-app new-dir --template amoutonbrady/solid-snowpack-starter`
+
+### Using yarn
+
+`yarn create snowpack-app new-dir --template amoutonbrady/solid-snowpack-starter`
 
 ## Configure
 
