@@ -6,7 +6,7 @@
     "lint": "prettier --check \"src/**/*.{ts,js}\""
   },
   "dependencies": {
-    "solid-js": "^0.21.6",
+    "solid-js": "^0.22.0",
     "workbox-window": "^5.1.4"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "@snowpack/plugin-typescript": "^1.1.0",
     "@types/snowpack-env": "^2.3.2",
     "autoprefixer": "^10.0.2",
-    "babel-preset-solid": "^0.21.3",
+    "babel-preset-solid": "^0.22.1",
     "postcss": "^8.1.7",
     "postcss-cli": "^8.2.0",
     "prettier": "^2.1.2",
