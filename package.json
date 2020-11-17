@@ -20,7 +20,7 @@
     "autoprefixer": "^10.0.2",
     "babel-preset-solid": "^0.22.1",
     "postcss": "^8.1.7",
-    "postcss-cli": "^8.2.0",
+    "postcss-cli": "^8.3.0",
     "prettier": "^2.1.2",
     "snowpack": "^2.17.1",
     "tailwindcss": "^1.9.6",
