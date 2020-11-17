@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import { createComponent, render } from 'solid-js/dom';
+import { createComponent, render } from 'solid-js/web';
 
 interface Provider {
   provider: Component;
@@ -29,7 +29,7 @@ interface Provider {
  *   document.querySelector('#app')
  *  )
  */
-function mergeProviders(app: Component, providers: Provider[]) {
+function mergeProviders(app: Element, providers: Provider[]) {
   return providers.reduceRight(
     (application, { provider, opts }) => {
       return () =>
@@ -39,7 +39,7 @@ function mergeProviders(app: Component, providers: Provider[]) {
           ...opts,
 
           get children() {
-            return application();
+            return application() as Element;
           },
         });
     },
@@ -47,7 +47,7 @@ function mergeProviders(app: Component, providers: Provider[]) {
   );
 }
 
-export function createApp(app: Component) {
+export function createApp(app: unknown) {
   const providers: Provider[] = [];
 
   return {
@@ -68,7 +68,7 @@ export function createApp(app: Component) {
      * @param dom {HTMLElement | string} - The element to mount your app on
      */
     mount(dom: HTMLElement | string) {
-      const application = mergeProviders(app, providers);
+      const application = mergeProviders(app as Element, providers);
       const root = typeof dom === 'string' ? document.querySelector(dom) : dom;
       return render(application, root);
     },
