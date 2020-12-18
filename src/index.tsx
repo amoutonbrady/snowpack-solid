@@ -1,4 +1,4 @@
-import { Workbox } from 'workbox-window';
+import './assets/tailwind.css';
 
 import { App } from './app';
 import { createApp } from './utils/bootstrap';
@@ -13,10 +13,4 @@ const dispose = createApp(App).mount('#app');
 if (import.meta.env.MODE === 'development') {
   import.meta.hot.accept();
   import.meta.hot.dispose(dispose);
-}
-
-// https://developers.google.com/web/tools/workbox/modules/workbox-window
-if (import.meta.env.MODE === 'production' && 'serviceWorker' in navigator) {
-  const wb = new Workbox('/sw.js');
-  wb.register();
 }
