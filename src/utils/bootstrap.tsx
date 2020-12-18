@@ -7,13 +7,15 @@ interface Provider {
 }
 
 /**
- * This utils function automcatically merge the provider in the order they
+ * This utils function automatically merge the provider in the order they
  * were provided. It turns the following calls:
  *
  * const app = createApp(App)
+ *
  * app.use(RouterProvider)
  * app.use(I18nProvider, { dict })
  * app.use(GlobalStoreProvider)
+ *
  * app.mount('#app')
  *
  * into something like that:

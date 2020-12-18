@@ -1,9 +1,13 @@
-# Solid snowpack starter (+ tailwind)
+# Solid snowpack starter (+ tailwind 2)
 
 Solid + snowpack + tailwindcss template
 You get HMR out of the box and full PWA compatible.
 
 ## Install
+
+Regardless of how you chose to get the project installed locally, it's recommanded to use [pnpm](https://pnpm.js.org/) to install your dependencies. It's faster, safer and easier.
+
+Once cloned, you can just run `pnpm install`.
 
 ### Using github template
 
@@ -21,7 +25,7 @@ Most of the link I used to generate the PWA files are available in the [index.ht
 
 ## Available Scripts
 
-### npm run dev
+### (p)npm run dev
 
 Runs the app in the development mode.
 Open http://localhost:8080 to view it in the browser.
@@ -29,7 +33,7 @@ Open http://localhost:8080 to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### npm run build
+### (p)npm run build
 
 Builds a static copy of your site to the `build/` folder.
 Your app is ready to be deployed!
