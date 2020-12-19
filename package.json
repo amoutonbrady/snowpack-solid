@@ -11,6 +11,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@intrnl/snowpack-bundle-rollup": "^0.1.4",
     "@rollup/plugin-replace": "^2.3.4",
     "@snowpack/plugin-babel": "^2.1.5",
     "@snowpack/plugin-postcss": "^1.0.11",

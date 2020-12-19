@@ -1,14 +1,15 @@
-import './assets/tailwind.css';
+import './styles/tailwind.css';
 
+import { render } from 'solid-js/web';
 import { App } from './app';
-import { createApp } from './utils/bootstrap';
 
-const dispose = createApp(App).mount('#app');
+const dispose = render(() => <App />, document.getElementById('app'));
 
 /**
- * This bits of code is tree-shaken during build
- * It handles HMR by accepting the incomming changes
- * and removing the existing app in place.
+ * Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
+ * Learn more: https://www.snowpack.dev/#hot-module-replacement
+ *
+ * Note: Solid doesn't support state preservation on hot reload as of yet
  */
 if (import.meta.env.MODE === 'development') {
   import.meta.hot.accept();

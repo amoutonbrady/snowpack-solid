@@ -36,6 +36,7 @@ You will also see any lint errors in the console.
 ### (p)npm run build
 
 Builds a static copy of your site to the `build/` folder.
+The build uses rollup for minimum file size output
 Your app is ready to be deployed!
 
 ### Q: What about Eject?
