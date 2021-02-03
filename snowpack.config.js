@@ -1,39 +1,36 @@
-module.exports = {
+/**
+ * @type {import('snowpack').SnowpackConfig}
+ */
+const config = {
   mount: {
     public: '/',
-    src: '/_dist_',
+    src: '/assets',
   },
-  install: [
-    /* ... */
-  ],
-  installOptions: {
+  packageOptions: {
     installTypes: true,
     NODE_ENV: true,
   },
   devOptions: {
-    out: 'build',
+    out: 'dist',
     open: 'none',
     bundle: true,
   },
   buildOptions: {
     clean: true,
-  },
-  proxy: {
-    /* ... */
-  },
-  alias: {
-    /* ... */
+    out: 'dist',
   },
   plugins: [
     '@snowpack/plugin-typescript',
     '@snowpack/plugin-babel',
     '@snowpack/plugin-postcss',
-    [
-      '@intrnl/snowpack-bundle-rollup',
-      {
-        minify: true,
-        modulesDir: false,
-      },
-    ],
   ],
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2020',
+    treeshake: true,
+    splitting: true,
+  },
 };
+
+module.exports = config;
