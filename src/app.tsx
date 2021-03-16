@@ -9,15 +9,17 @@ export const App: Component = () => {
     <>
       <button
         type="button"
-        onClick={[decrement, 2]}
+        onClick={() => decrement(2)}
         class="bg-gray-900 text-gray-100 p-4 text-3xl"
       >
         -
       </button>
+
       <span class="p-4 text-3xl">{count()}</span>
+
       <button
         type="button"
-        onClick={[increment, 1]}
+        onClick={() => increment(1)}
         class="bg-gray-900 text-gray-100 p-4 text-3xl"
       >
         +
